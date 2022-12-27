@@ -1,3 +1,7 @@
+* {
+    outline: 1px solid #ff6347;
+}
+
 html {
     font-size: 10px;
 }
@@ -129,6 +133,7 @@ body {
     font-weight: 900;
     text-shadow: 0 0 1px #000;
     margin: 0 0 15px 0;
+    word-break: keep-all;
 }
 
 #mainVisual .main_slide .itm p {
@@ -163,8 +168,32 @@ body {
     color: #fff;
 }
 
+#mainProduct {
+    position: relative;
+}
+
 #mainProduct .inner {
     overflow: hidden;
+}
+
+#mainProduct .arrows i {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 3rem;
+    padding: 1rem;
+    background: #ff6347;
+    color: #fff;
+}
+
+#mainProduct .arrows i:first-child {
+    margin: 0 0 0 -700px;
+}
+
+#mainProduct .arrows i:last-child {
+    margin: 0 0 0 700px;
 }
 
 #mainProduct .product_slide {
@@ -175,18 +204,278 @@ body {
     margin: 0 15px;
 }
 
+#footer {
+    background: #333;
+    color: #fff;
+}
 
-@media (max-width: 1200px) {
+#footer .top {
+    border-bottom: 1px solid #888;
+    line-height: 8rem;
+}
+
+#footer .top .inner {
+    text-align: center;
+    font-size: 0;
+}
+
+#footer .top .inner li {
+    display: inline-block;
+    font-size: 1.4rem;
+}
+
+#footer .top .inner li>a {
+    padding: 0 10px;
+}
+
+#footer .top .inner li~li::before {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 10px;
+    background: #888;
+}
+
+#footer .bottom {
+    text-align: center;
+    padding: 20px 0 30px 0;
+    font-size: 1.4rem;
+    line-height: 2rem;
+}
+
+
+@media (max-width: 768px) {
     .f_inner {
         display: flex;
         flex-direction: column;
         gap: 30px;
         width: auto;
         margin: 0 auto;
+        padding: 0 15px;
     }
 
     .inner {
         width: auto;
         margin: 0 auto;
+        padding: 0 15px;
+    }
+
+
+    /* header */
+
+    #header {
+        position: relative;
+        line-height: 10rem;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #header .f_inner {
+        justify-content: space-between;
+    }
+
+    #header .gnb {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+
+        background: #fff;
+        width: calc(100% - 90px);
+        height: 100vh;
+    }
+
+    #header .right {
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        line-height: 1;
+        z-index: 999;
+    }
+
+    #header .gnb>ul {
+        display: flex;
+        flex-direction: column;
+        line-height: 4rem;
+    }
+
+    #header .gnb>ul>li a {
+        display: block;
+        padding: 0 3rem;
+    }
+
+    #header .gnb>ul>li {
+        position: relative;
+        z-index: 999;
+    }
+
+
+
+    #header .gnb::before {
+        content: "";
+        position: absolute;
+        top: 101px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        height: 0;
+        z-index: 999;
+
+        transition: 0.5s;
+
+        display: none;
+    }
+
+    #header:hover .gnb::before {
+        height: 160px;
+    }
+
+    #header .gnb>ul>li .submenu {
+        position: static;
+        top: 100px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        line-height: 40px;
+        height: 0;
+        overflow: hidden;
+
+        transition: 0.5s;
+    }
+
+    #header:hover .gnb>ul>li .submenu {
+        height: 160px;
+    }
+
+    #mainVisual {
+        position: relative;
+    }
+
+    #mainVisual .main_slide .slick-list,
+    #mainVisual .main_slide .slick-track {
+        transition-delay: 30ms;
+    }
+
+    #mainVisual .main_slide .itm {
+        position: relative;
+        height: 600px;
+    }
+
+    #mainVisual .main_slide .itm h3 {
+        font-size: 6vw;
+        font-weight: 900;
+        text-shadow: 0 0 1px #000;
+        margin: 0 0 15px 0;
+    }
+
+    #mainVisual .main_slide .itm p {
+        font-size: 1.5rem;
+        text-shadow: 0 0 1px #000;
+        margin: 0 0 30px 0;
+    }
+
+    #mainVisual .main_slide .itm a {
+        display: inline-block;
+        border: 1px solid #fff;
+        padding: 5px 30px 7px 30px;
+    }
+
+    #mainVisual .main_slide .itm01 {
+        background: url(../img/main_visual01.jpg) no-repeat center center/cover;
+    }
+
+    #mainVisual .main_slide .itm02 {
+        background: url(../img/main_visual02.jpg) no-repeat center center/cover;
+    }
+
+    #mainVisual .main_slide .itm03 {
+        background: url(../img/main_visual03.jpg) no-repeat center center/cover;
+    }
+
+    #mainVisual .main_slide .inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+
+        width: 100%;
+    }
+
+    #mainProduct {
+        position: relative;
+    }
+
+    #mainProduct .inner {
+        padding: 0 0;
+        overflow: hidden;
+    }
+
+    #mainProduct .arrows i {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(0, -50%);
+
+        font-size: 3rem;
+        padding: 1rem;
+        background: #ff6347;
+        color: #fff;
+    }
+
+    #mainProduct .arrows i:first-child {
+        margin: 0 0 0 0;
+        left: 0;
+    }
+
+    #mainProduct .arrows i:last-child {
+        margin: 0 0 0 0;
+        left: auto;
+        right: 0;
+    }
+
+    #mainProduct .product_slide {
+        margin: 0 0;
+    }
+
+    #mainProduct .product_slide figure {
+        margin: 0 0;
+    }
+
+    #footer {
+        background: #333;
+        color: #fff;
+    }
+
+    #footer .top {
+        border-bottom: 1px solid #888;
+        line-height: 3rem;
+    }
+
+    #footer .top .inner {
+        text-align: center;
+        font-size: 0;
+    }
+
+    #footer .top .inner li {
+        display: block;
+        font-size: 1.4rem;
+    }
+
+    #footer .top .inner li>a {
+        padding: 0 10px;
+    }
+
+    #footer .top .inner li~li::before {
+        content: "";
+        display: none;
+        width: 1px;
+        height: 10px;
+        background: #888;
+    }
+
+    #footer .bottom {
+        text-align: center;
+        padding: 20px 0 30px 0;
+        font-size: 1.4rem;
+        line-height: 2rem;
     }
 }
