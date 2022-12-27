@@ -1,5 +1,5 @@
 * {
-    outline: 1px solid #ff6347;
+    outline: 1px solid --#ff6347;
 }
 
 html {
@@ -168,6 +168,10 @@ body {
     color: #fff;
 }
 
+#mainVisual .wheel {
+    display: none;
+}
+
 #mainProduct {
     position: relative;
 }
@@ -276,12 +280,19 @@ body {
     #header .gnb {
         position: fixed;
         top: 0;
-        left: 0;
+        left: -100%;
         z-index: 999;
 
         background: #fff;
         width: calc(100% - 90px);
         height: 100vh;
+        border-right: 1px solid #ddd;
+
+        transition: left 0.5s;
+    }
+
+    #header .gnb.on {
+        left: 0;
     }
 
     #header .right {
@@ -296,9 +307,11 @@ body {
         display: flex;
         flex-direction: column;
         line-height: 4rem;
+        padding: 150px 15px 0 15px;
     }
 
     #header .gnb>ul>li a {
+        position: relative;
         display: block;
         padding: 0 3rem;
     }
@@ -306,6 +319,28 @@ body {
     #header .gnb>ul>li {
         position: relative;
         z-index: 999;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #header .gnb>ul>li>a::after {
+        content: "\e941";
+        font-family: xeicon;
+        font-size: 3px;
+        background: #ddd;
+        padding: 2px;
+        border-radius: 50%;
+        color: #fff;
+
+        position: absolute;
+        top: 50%;
+        right: 30px;
+        transform: translate(0, -50%);
+
+        line-height: 1;
+    }
+
+    #header .gnb>ul>li>a.on::after {
+        transform: translate(0, -50%) rotate(180deg);
     }
 
 
@@ -333,20 +368,63 @@ body {
         position: static;
         top: 100px;
         left: 50%;
-        transform: translate(-50%, 0);
+        transform: translate(0, 0);
         line-height: 40px;
-        height: 0;
+        height: auto;
         overflow: hidden;
 
-        transition: 0.5s;
+        background: #f7f7f7;
+
+        display: none;
+
+        transition: none;
+    }
+
+    #header .gnb>ul>li .submenu li {
+        border-top: 1px solid #ddd;
     }
 
     #header:hover .gnb>ul>li .submenu {
-        height: 160px;
+        height: auto;
     }
 
     #mainVisual {
         position: relative;
+    }
+
+    #mainVisual .wheel {
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translate(-50%, 0);
+
+        width: 30px;
+        height: 50px;
+        border: 2px solid #fff;
+        border-radius: 15px;
+
+        font-size: 0;
+
+        display: block;
+    }
+
+    #mainVisual .wheel span {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translate(-50%, 0);
+
+        width: 4px;
+        height: 8px;
+        background: #fff;
+        border-radius: 2px;
+        animation: wheel 0.5s infinite;
+    }
+
+    @keyframes wheel {
+        to {
+            top: 13px;
+        }
     }
 
     #mainVisual .main_slide .slick-list,
@@ -356,7 +434,7 @@ body {
 
     #mainVisual .main_slide .itm {
         position: relative;
-        height: 600px;
+        height: calc(100vh - 100px);
     }
 
     #mainVisual .main_slide .itm h3 {
